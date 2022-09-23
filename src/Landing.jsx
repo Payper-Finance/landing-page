@@ -85,7 +85,7 @@ export default function Landing() {
       telegramId: e.target.telegramId.value,
     };
     await axios
-      .post("http://localhost:8000/post", qs.stringify(registered), {
+      .post("https://api.payperfi.com/post", qs.stringify(registered), {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -241,6 +241,7 @@ export default function Landing() {
                     placeholder={`${walletaddress}`}
                     name="wallet"
                     type="text"
+                    value={walletaddress}
                     readOnly
                   />
                 </div>
@@ -276,7 +277,7 @@ export default function Landing() {
         !succsess?(""):(<div className="Popover">
           <div className="popoverdiv">
             <button
-              onClick={() => setShow(false)}
+              onClick={() => setSuccess(false)}
               style={{
                 position: "absolute",
                 background: "none",
@@ -289,15 +290,15 @@ export default function Landing() {
             <div>
               <h2>Please! Join the Discord server and Telegram channel</h2>
               <div style={{ display: "flex", justifyContent: "center" ,margin:"0"}}>
-                <img
+                <a href=""><img //Telegram
                   style={{ width: "70px", height: "70px" }}
                   src="img/pngegg (1).png"
-                />
+                /></a>
 
-                <img
+                <a href=""><img //Discord
                   style={{ width: "60px", height: "60px", marginTop: "5px" }}
                   src="img/discord.png"
-                />
+                /></a>
               </div>
             </div>
           </div>
