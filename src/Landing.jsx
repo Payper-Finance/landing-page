@@ -7,7 +7,7 @@ import $ from "jquery";
 import axios from "axios";
 import qs from "qs";
 
-var words = ["#defi", "#derivative", "#Trading"],
+var words = ["defi", "derivative", "trading"],
   part,
   i = 0,
   offset = 0,
@@ -58,6 +58,7 @@ export default function Landing() {
   const [popup, setpopup] = useState(false);
   const [walletaddress, setWalletaddress] = useState("");
   const [succsess, setSuccess] = useState(false);
+  const [submitBtn, setSubmitBtn] = useState("Submit");
   useEffect(() => {
     (async () => {
       const accounts = await getAccount();
@@ -84,14 +85,10 @@ export default function Landing() {
       discordId: e.target.discordId.value,
       telegramId: e.target.telegramId.value,
     };
+    setSubmitBtn("Adding to Waitlist");
     await axios
-      .post("https://api.payperfi.com/post", qs.stringify(registered), {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      })
+      .post("https://ggbackend.herokuapp.com/api/post", registered)
       .then((res) => {
-        console.log(res.data);
         if (res.data == "user Exist") {
           alert("You are already submitted with email or wallet address!");
         } else {
@@ -108,7 +105,7 @@ export default function Landing() {
   return (
     <div className="Landing_body">
       <section className="Landing_navbar item">
-        <div id="menuToggle" onClick={() => setTogle(toggle ? false : true)}>
+        <div style={{zIndex:5}} id="menuToggle" onClick={() => setTogle(toggle ? false : true)}>
           <span></span>
           <span></span>
           <span></span>
@@ -116,12 +113,12 @@ export default function Landing() {
         <div>
           <h2>ZENITH</h2>
         </div>
-        <ul id={`${toggle ? "menu" : ""}`}>
+        <ul style={{zIndex:2}} id={`${toggle ? "menu" : ""}`}>
           <li>Future </li>
           <li>Options</li>
           <li>Staking</li>
-          <li>Docs</li>
-          <li>Support</li>
+          <li><a href="https://docs.payperfi.com/" target="_blank" rel="noreferrer" style={{textDecoration: "none", color: "white"}}>Docs</a></li>
+          <li><a href="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer" style={{textDecoration: "none", color: "white"}}>Support</a></li>
         </ul>
         <div>
           {popup ? (
@@ -179,8 +176,11 @@ export default function Landing() {
           <div>
             <h1>
               We make{" "}
+              <span style={{ color: "rgba(223, 0, 248, 1)" }}>
+                #
+              </span>
               <span style={{ color: "rgba(223, 0, 248, 1)" }} className="word">
-                #defi
+                defi
               </span>{" "}
               <br /> clear and simple
             </h1>
@@ -254,7 +254,7 @@ export default function Landing() {
                   name="discordId"
                   type="text"
                 />
-                <button>Join</button>
+                <a href="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer"><Button>Join</Button></a>
               </div>
               <div>
                 <label>Telegram</label>
@@ -263,9 +263,9 @@ export default function Landing() {
                   name="telegramId"
                   type="text"
                 />
-                <button>Join</button>
+                <a href="https://t.me/Payper_Finance" target="_blank" rel="noreferrer"><Button>Join</Button></a>
               </div>
-              <button type="submit">Submit</button>
+              <button type="submit">{submitBtn}</button>
             </form>
           </div>
         </div>
@@ -290,12 +290,12 @@ export default function Landing() {
             <div>
               <h2>Please! Join the Discord server and Telegram channel</h2>
               <div style={{ display: "flex", justifyContent: "center" ,margin:"0"}}>
-                <a href=""><img //Telegram
+                <a href="https://t.me/Payper_Finance" target="_blank" rel="noreferrer"><img //Telegram
                   style={{ width: "70px", height: "70px" }}
                   src="img/pngegg (1).png"
                 /></a>
 
-                <a href=""><img //Discord
+                <a href="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer"><img //Discord
                   style={{ width: "60px", height: "60px", marginTop: "5px" }}
                   src="img/discord.png"
                 /></a>
@@ -351,14 +351,14 @@ export default function Landing() {
             <span style={{ color: "rgba(223, 1, 249, 1)" }}>WHITELISTED</span>
           </h3>
           <ul>
-            <li>1. Successful whitelisted will get 10 ZNTH Token.</li>
-            <li>2. Taking a trade you can earn 2 ZNTH Token.</li>
+            <li>1. Successful whitelisted will get 10 PPR Token.</li>
+            <li>2. Taking a trade you can earn 2 PPR Token.</li>
             <li>
-              3. At end of each day top 5 profitable traders get 50 ZNTH token.
+              3. At end of each day top 5 profitable traders get 50 PPR token.
             </li>
-            <li>4. If position gets liquidated you get 1 ZNTH Token.</li>
+            <li>4. If position gets liquidated you get 1 PPR Token.</li>
             <li>
-              5. Reporting bug to the team you can earn 50 to 1000 ZNTH tokens.
+              5. Reporting bug to the team you can earn 50 to 1000 PPR tokens.
             </li>
           </ul>
         </div>
@@ -525,35 +525,35 @@ export default function Landing() {
         <div>
           <h2>Join us here for latest updates</h2>
           <h4>To keep up to date, join our Discord server</h4>
-          <form action="https://discord.gg/DMVS3mWpaN">
+          <form action="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer">
           <Button type="submit">JOIN DISCORD</Button>
           </form>
         </div>
         <footer>
           <div>
             <img src="img/flogo.png" />
-            <h2>ZENITH</h2>
+            <h2 >ZENITH</h2>
           </div>
           <div>
             <ul>
               <li>
-                <a href="https://discord.gg/DMVS3mWpaN">
+                <a href="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer">
                 <img src="img/discord.png"  />
                 </a>
               </li>
     
               <li>
-              <a href="https://twitter.com/PayperFinance">
+              <a href="https://twitter.com/PayperFinance" target="_blank" rel="noreferrer">
                 <img src="img/pngegg.png" />
                 </a>
               </li>
               <li>
-              <a href=" https://t.me/Payper_Finance">
+              <a href=" https://t.me/Payper_Finance" target="_blank" rel="noreferrer">
                 <img src="img/pngegg (1).png" />
                 </a>
               </li>
               <li>
-              <a href="https://www.linkedin.com/company/payper-finance/">
+              <a href="https://www.linkedin.com/company/payper-finance/" target="_blank" rel="noreferrer">
                 <img src="img/linkdn.png" />
                 </a>
               </li>

@@ -1177,7 +1177,7 @@ margin: auto;
   z-index: 1;
   position: absolute;
   flex-direction: column;
-  background: linear-gradient(112.72deg, #78c4db 11.44%, #8934f8 50.27%);
+  background: linear-gradient(112.72deg, #78c4dbfa 11.44%, #8934f8f4 80.27%);
   mix-blend-mode:light;
   box-shadow: inset 0px 20.0205px 20.0205px rgba(194, 255, 255, 0.25),
     inset -5.00511px -5.00511px 20.0205px #6d2cc1,
