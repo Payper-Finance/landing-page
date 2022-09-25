@@ -2,7 +2,7 @@
 
 /* /////////////////////////////////////////////////////////////////////// */
 
-.Topleftsphere {
+ .Topleftsphere {
   position: absolute;
   border: 0.5px;
   top: -150px;
@@ -16,6 +16,8 @@
     inset -5.00511px -5.00511px 20.0205px #6d2cc1,
     inset -35.0358px -50.0511px 100.102px rgba(172, 60, 225, 0.76);
 }
+
+
 .Homerightsphere {
   position: absolute;
   width: 697px;
@@ -64,21 +66,21 @@
   opacity: 1;
   pointer-events: all;
   transition-timing-function: ease;
-  transition-delay: 1s;
+  transition-delay: 0s;
 
 }
 .scrollFade--hidden {
   opacity: 0;
   pointer-events: none;
   transition-timing-function: ease-out;
-  transition-delay: 1s;
+  transition-delay: 0s;
 
 }
 .scrollFade--visible {
   opacity: 1;
   pointer-events: all;
   transition-timing-function: ease-in;
-  transition-delay: 0.8s;
+  transition-delay: 0s;
 }
 
 .scrollFade--animate {
@@ -86,7 +88,7 @@
 }
 .glow {
 
-  animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 0.6s ease-in-out infinite alternate;
 }
 
 @-webkit-keyframes glow {
@@ -1130,6 +1132,31 @@ margin: auto;
 @media screen and (max-width: 530px) and (min-width: 270px) {
 
 
+
+  .Homerightsphere {
+   display: none;
+  }
+  .landingdetails_sphere1 {
+    display: none;
+
+  }
+  .landingdetails_sphere2 {
+    opacity: 0.5;
+    position: absolute;
+    right: -100px;
+    display: block;
+    height: 300px;
+    width: 300px;
+    background: linear-gradient(180deg, #2c4982 0%, #2cd095 100%);
+    filter: blur(150px);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
+  .Landing_start2_sphere2 {
+    display: none;
+
+  }
+
+
   /* --------------------------------------------------------------------------------- */
 
 
@@ -1577,8 +1604,15 @@ text-fill-color: transparent;
 
 }
 @media screen and (max-width: 520px) and (min-width: 250px) {
+  .disconnectbutton{
+    font-size: 11.5px !important;
+    margin-right: 10% !important;
+  }
+  .popoverconnectbtn >button{
+    font-size: 11px !important;
+  }
   .popoverdiv {
-
+  
     width: 300px;
   }
   .popoverdiv div label{
@@ -1606,7 +1640,7 @@ padding: 0;
     height: 44px;
     margin-top: 10px;
     border: none;
-    font-size: 18px;
+    font-size: 12px ;
     background: linear-gradient(225deg, #18C8FF 14.89%, #933FFE 85.85%);
     border-radius: 10px;
     color: white;

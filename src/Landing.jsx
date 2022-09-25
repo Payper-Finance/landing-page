@@ -105,7 +105,11 @@ export default function Landing() {
   return (
     <div className="Landing_body">
       <section className="Landing_navbar item">
-        <div style={{zIndex:5}} id="menuToggle" onClick={() => setTogle(toggle ? false : true)}>
+        <div
+          style={{ zIndex: 5 }}
+          id="menuToggle"
+          onClick={() => setTogle(toggle ? false : true)}
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -113,21 +117,53 @@ export default function Landing() {
         <div>
           <h2>ZENITH</h2>
         </div>
-        <ul style={{zIndex:2}} id={`${toggle ? "menu" : ""}`}>
+        <ul style={{ zIndex: 2 }} id={`${toggle ? "menu" : ""}`}>
           <li>Future </li>
           <li>Options</li>
           <li>Staking</li>
-          <li><a href="https://docs.payperfi.com/" target="_blank" rel="noreferrer" style={{textDecoration: "none", color: "white"}}>Docs</a></li>
-          <li><a href="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer" style={{textDecoration: "none", color: "white"}}>Support</a></li>
+          <li>
+            <a
+              href="https://docs.payperfi.com/"
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Docs
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://discord.gg/DMVS3mWpaN"
+              target="_blank"
+              rel="noreferrer"
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              Support
+            </a>
+          </li>
         </ul>
-        <div>
-          {popup ? (
+        <div
+        >
+          
+
+          {walletaddress == "" ? (
+            <Button style={{ zIndex: "2" }} onClick={connectwallet}>
+              {" "}
+              Connect Wallet
+            </Button>
+          ) : (
+            <Button  className="disconnectbutton"  style={{ zIndex: "2" }} onClick={() => setpopup(true)}>
+              {walletaddress.substring(0, 15)}...
+            </Button>
+          )}
+{popup ? (
             <div
               style={{
                 position: "absolute",
-                width: "100px",
-                top: "10%",
-                right: "3.1%",
+                width: "auto",
+                marginTop:"2px",
+                right:"3.1%",
+                zIndex: "3",
               }}
             >
               <div
@@ -135,10 +171,13 @@ export default function Landing() {
                   display: "flex",
                   flexDirection: "column",
                   width: "auto",
+                  zIndex: "3",
                 }}
+              className="popoverconnectbtn"
+
               >
-                <button
-                  style={{ padding: "5px" }}
+                <Button
+                  style={{ padding: "5px"}}
                   onClick={() =>
                     navigator.clipboard
                       .writeText(walletaddress)
@@ -146,24 +185,16 @@ export default function Landing() {
                   }
                 >
                   copy address
-                </button>
-                <button onClick={disconnectwallet} style={{ padding: "5px" }}>
+                </Button>
+                <Button onClick={disconnectwallet} style={{ padding: "5px" }}>
                   Disconnect
-                </button>
+                </Button>
               </div>
             </div>
           ) : (
             ""
           )}
-
-          {walletaddress == "" ? (
-            <Button onClick={connectwallet}> Connect Wallet</Button>
-          ) : (
-            <Button onClick={() => setpopup(true)}>
-              {walletaddress.substring(0, 15)}...
-            </Button>
-          )}
-        </div>
+          </div>
       </section>
       <span className="home_star">
         <img src="img/star-img.png" />
@@ -175,10 +206,7 @@ export default function Landing() {
         <div className="HomeContent">
           <div>
             <h1>
-              We make{" "}
-              <span style={{ color: "rgba(223, 0, 248, 1)" }}>
-                #
-              </span>
+              We make <span style={{ color: "rgba(223, 0, 248, 1)" }}>#</span>
               <span style={{ color: "rgba(223, 0, 248, 1)" }} className="word">
                 defi
               </span>{" "}
@@ -202,79 +230,101 @@ export default function Landing() {
 
       {/* popup */}
       {show ? (
-
-        walletaddress==''?(alert("First Connect Your Wallet")):(
-        <div className="Popover">
-          <div className="popoverdiv">
-            <form onSubmit={submit}>
-              <h2>Get Whitelisted Here </h2>
-              <button
-                onClick={() => setShow(false)}
-                style={{
-                  position: "absolute",
-                  background: "none",
-                  top: "5px",
-                  right: "-40px",
-                }}
-              >
-                <img style={{ width: "20px" }} src="img/icons8-close-30.png" />
-              </button>
-              <div>
-                <label>Email</label>
-                <input placeholder="email" name="email" type="email" required />
-              </div>
-              {walletaddress == "" ? (
+        walletaddress == "" ? (
+          alert("First Connect Your Wallet")
+        ) : (
+          <div className="Popover">
+            <div className="popoverdiv">
+              <form onSubmit={submit}>
+                <h2>Get Whitelisted Here </h2>
+                <button
+                  onClick={() => setShow(false)}
+                  style={{
+                    position: "absolute",
+                    background: "none",
+                    top: "5px",
+                    right: "-40px",
+                  }}
+                >
+                  <img
+                    style={{ width: "20px" }}
+                    src="img/icons8-close-30.png"
+                  />
+                </button>
                 <div>
-                  <label>Wallet</label>
+                  <label>Email</label>
                   <input
-                    placeholder="Wallet Address"
-                    name="wallet"
-                    type="text"
+                    placeholder="email"
+                    name="email"
+                    type="email"
                     required
                   />
                 </div>
-              
-              ) : (
-                <div>
-                  <label>Wallet</label>
-                  <input
-                    placeholder={`${walletaddress}`}
-                    name="wallet"
-                    type="text"
-                    value={walletaddress}
-                    readOnly
-                  />
-                </div>
-              )}
+                {walletaddress == "" ? (
+                  <div>
+                    <label>Wallet</label>
+                    <input
+                      placeholder="Wallet Address"
+                      name="wallet"
+                      type="text"
+                      required
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <label>Wallet</label>
+                    <input
+                      placeholder={`${walletaddress}`}
+                      name="wallet"
+                      type="text"
+                      value={walletaddress}
+                      readOnly
+                    />
+                  </div>
+                )}
 
-              <div>
-                <label>Discord</label>
-                <input
-                  placeholder="Discord Username"
-                  name="discordId"
-                  type="text"
-                />
-                <a href="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer"><Button>Join</Button></a>
-              </div>
-              <div>
-                <label>Telegram</label>
-                <input
-                  placeholder="Telegram Username"
-                  name="telegramId"
-                  type="text"
-                />
-                <a href="https://t.me/Payper_Finance" target="_blank" rel="noreferrer"><Button>Join</Button></a>
-              </div>
-              <button type="submit">{submitBtn}</button>
-            </form>
+                <div>
+                  <label>Discord</label>
+                  <input
+                    placeholder="Discord Username"
+                    name="discordId"
+                    type="text"
+                  />
+                  <a
+                    href="https://discord.gg/DMVS3mWpaN"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Button>Join</Button>
+                  </a>
+                </div>
+                <div>
+                  <label>Telegram</label>
+                  <input
+                    placeholder="Telegram Username"
+                    name="telegramId"
+                    type="text"
+                  />
+                  <a
+                    href="https://t.me/Payper_Finance"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Button>Join</Button>
+                  </a>
+                </div>
+                <button type="submit">{submitBtn}</button>
+              </form>
+            </div>
           </div>
-        </div>
         )
       ) : (
         ""
       )}
-      {
-        !succsess?(""):(<div className="Popover">
+      {!succsess ? (
+        ""
+      ) : (
+        <div className="Popover">
           <div className="popoverdiv">
             <button
               onClick={() => setSuccess(false)}
@@ -289,22 +339,39 @@ export default function Landing() {
             </button>
             <div>
               <h2>Please! Join the Discord server and Telegram channel</h2>
-              <div style={{ display: "flex", justifyContent: "center" ,margin:"0"}}>
-                <a href="https://t.me/Payper_Finance" target="_blank" rel="noreferrer"><img //Telegram
-                  style={{ width: "70px", height: "70px" }}
-                  src="img/pngegg (1).png"
-                /></a>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  margin: "0",
+                }}
+              >
+                <a
+                  href="https://t.me/Payper_Finance"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img //Telegram
+                    style={{ width: "70px", height: "70px" }}
+                    src="img/pngegg (1).png"
+                  />
+                </a>
 
-                <a href="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer"><img //Discord
-                  style={{ width: "60px", height: "60px", marginTop: "5px" }}
-                  src="img/discord.png"
-                /></a>
+                <a
+                  href="https://discord.gg/DMVS3mWpaN"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img //Discord
+                    style={{ width: "60px", height: "60px", marginTop: "5px" }}
+                    src="img/discord.png"
+                  />
+                </a>
               </div>
             </div>
           </div>
         </div>
-        )
-      }
+      )}
 
       <section className="Landing_cards scrollFade">
         <div className="Landing_cards_head">
@@ -340,9 +407,7 @@ export default function Landing() {
           </p>
         </div>
 
-        <span
-          style={{ position: "absolute", marginLeft: "60%", marginTop: "10%" }}
-        >
+        <span style={{ position: "absolute", right: "0", marginTop: "10%" }}>
           <img src="img/bg-img.png" />
         </span>
         <div className="Landing_cards_details ">
@@ -511,7 +576,7 @@ export default function Landing() {
             <h1>
               Take your first step into safe, secure crypto derivatives trading
             </h1>
-            <Button onClick={() => setShow(true)} >Get Started</Button>
+            <Button onClick={() => setShow(true)}>Get Started</Button>
           </div>
         </div>
         <div className="Landing_start2_image">
@@ -525,36 +590,56 @@ export default function Landing() {
         <div>
           <h2>Join us here for latest updates</h2>
           <h4>To keep up to date, join our Discord server</h4>
-          <form action="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer">
-          <Button type="submit">JOIN DISCORD</Button>
+          <form
+            action="https://discord.gg/DMVS3mWpaN"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button type="submit">JOIN DISCORD</Button>
           </form>
         </div>
         <footer>
           <div>
             <img src="img/flogo.png" />
-            <h2 >ZENITH</h2>
+            <h2>ZENITH</h2>
           </div>
           <div>
             <ul>
               <li>
-                <a href="https://discord.gg/DMVS3mWpaN" target="_blank" rel="noreferrer">
-                <img src="img/discord.png"  />
+                <a
+                  href="https://discord.gg/DMVS3mWpaN"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="img/discord.png" />
                 </a>
               </li>
-    
+
               <li>
-              <a href="https://twitter.com/PayperFinance" target="_blank" rel="noreferrer">
-                <img src="img/pngegg.png" />
+                <a
+                  href="https://twitter.com/PayperFinance"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="img/pngegg.png" />
                 </a>
               </li>
               <li>
-              <a href=" https://t.me/Payper_Finance" target="_blank" rel="noreferrer">
-                <img src="img/pngegg (1).png" />
+                <a
+                  href=" https://t.me/Payper_Finance"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="img/pngegg (1).png" />
                 </a>
               </li>
               <li>
-              <a href="https://www.linkedin.com/company/payper-finance/" target="_blank" rel="noreferrer">
-                <img src="img/linkdn.png" />
+                <a
+                  href="https://www.linkedin.com/company/payper-finance/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="img/linkdn.png" />
                 </a>
               </li>
             </ul>
