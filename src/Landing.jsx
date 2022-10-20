@@ -123,7 +123,7 @@ export default function Landing() {
           <li>Staking</li>
           <li>
             <a
-              href="https://docs.payperfi.com/"
+              href="https://payper-finance.gitbook.io/zenith-1/"
               target="_blank"
               rel="noreferrer"
               style={{ textDecoration: "none", color: "white" }}
@@ -220,7 +220,7 @@ export default function Landing() {
             </h4>
           </div>
           <div>
-            <Button onClick={() => setShow(true)}>Whitelist Now</Button>
+            <Button /*onClick={() => setShow(true)}*/><a style={{textDecoration:"none",color:"white"}} href="https://trade.zenith.payperfi.com/">Trade Now</a></Button>
           </div>
         </div>
         <div className="homeLogo">
@@ -386,8 +386,8 @@ export default function Landing() {
           <img src="img/card1.png" />
           <h3>Step-1</h3>
           <p>Click on whitelist now Connect you wallet</p>
-          <a onClick={() => setShow(true)}>
-            Get Started <img src="img/Stroke1.png" />
+          <a href="https://trade.zenith.payperfi.com/">
+          Trade Now <img src="img/Stroke1.png" />
           </a>
         </div>
         <div style={{ height: "280px" }} className="each_cards">
@@ -451,7 +451,7 @@ export default function Landing() {
             Start trading perpetual futures using VMM on Zenith with as low as 1
             ꜩ
           </h4>
-          <Button onClick={() => setShow(true)}>Get Started</Button>
+          <Button ><a style={{textDecoration:"none",color:"white"}} href="https://trade.zenith.payperfi.com/">Trade Now</a></Button>
         </div>
       </section>
 
@@ -467,7 +467,7 @@ export default function Landing() {
               This will provide higher leverage and a less manipulative market
               and slippage.
             </h4>
-            <Button onClick={() => setShow(true)}>Get Started</Button>
+            <Button ><a style={{textDecoration:"none",color:"white"}} href="https://trade.zenith.payperfi.com/">Trade Now</a></Button>
           </div>
         </div>
       </section>
@@ -576,7 +576,7 @@ export default function Landing() {
             <h1>
               Take your first step into safe, secure crypto derivatives trading
             </h1>
-            <Button onClick={() => setShow(true)}>Get Started</Button>
+            <Button ><a style={{textDecoration:"none",color:"white"}} href="https://trade.zenith.payperfi.com/">Trade Now</a></Button>
           </div>
         </div>
         <div className="Landing_start2_image">
@@ -614,7 +614,15 @@ export default function Landing() {
                   <img src="img/discord.png" />
                 </a>
               </li>
-
+              <li>
+                <a
+                   href="https://payper-finance.gitbook.io/zenith-1/"
+                   target="_blank"
+                   rel="noreferrer"
+                >
+                  <img style={{borderRadius:"4px"}} src="img/gitbook.png" />
+                </a>
+              </li>
               <li>
                 <a
                   href="https://twitter.com/PayperFinance"
