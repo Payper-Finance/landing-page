@@ -373,7 +373,50 @@ export default function Landing() {
         </div>
       )}
 
-      <section className="Landing_cards scrollFade">
+      <div className="Landing_details_downcards scrollFade">
+        <div>
+          <div className="each_cards">
+            <img src="img/card1.png" />
+            <h3>Future</h3>
+            <p>
+              Trade Perpetual future In XTZ,BTC,ETH without worrying about
+              liquidity
+            </p>
+            <a href="https://trade.zenith.payperfi.com/" >
+              Get Started <img src="img/Stroke1.png" />
+            </a>
+          </div>
+          <div className="each_cards">
+            <img src="img/card2.png" />
+            <h3>VMM</h3>
+            <p>
+              A VMM model has higher capital efficiency and is most suitable for
+              under-collateralized derivative products as compared to the AMM
+              model.
+            </p>
+            <a href="https://trade.zenith.payperfi.com/">
+            Get Started  <img src="img/Stroke1.png" />
+            </a>
+          </div>
+          <div className="each_cards">
+            <img src="img/card3.png" />
+            <h3>Staking</h3>
+            <p>
+              Stake our Token and earn constant APY irrespective of market
+              volatality,alsoearn bonus tokens for staking certain period of
+              time.
+            </p>
+            <a >
+            Coming soon <img src="img/Stroke1.png" />
+            </a>
+          </div>
+          <span style={{ position: "absolute", right: "0", marginTop: "10%" }}>
+          <img src="img/bg-img.png" />
+        </span>
+        </div>
+      </div>
+
+      {/* <section className="Landing_cards scrollFade">
         <div className="Landing_cards_head">
           <h2>
             STEPS TO GET{" "}
@@ -394,9 +437,7 @@ export default function Landing() {
           <img src="img/card2.png" />
           <h3>Step-2</h3>
           <p>Enter your valid email, Discor id,telegram id</p>
-          {/* <a>
-            Coming soon <img src="img/Stroke1.png" />
-          </a> */}
+    
         </div>
         <div style={{ height: "280px" }} className="each_cards">
           <img src="img/card3.png" />
@@ -427,7 +468,7 @@ export default function Landing() {
             </li>
           </ul>
         </div>
-      </section>
+      </section> */}
 
       <span style={{ position: "absolute", left: "15%" }}>
         <img src="img/star-img.png" />
@@ -454,7 +495,6 @@ export default function Landing() {
           <Button ><a style={{textDecoration:"none",color:"white"}} href="https://trade.zenith.payperfi.com/">Trade Now</a></Button>
         </div>
       </section>
-
       <section className="Landing_details scrollFade">
         <div className="details_image">
           <span className="landingdetails_sphere1 glow"></span>
@@ -471,45 +511,7 @@ export default function Landing() {
           </div>
         </div>
       </section>
-      <div className="Landing_details_downcards scrollFade">
-        <div>
-          <div className="each_cards">
-            <img src="img/card1.png" />
-            <h3>Future</h3>
-            <p>
-              Trade Perpetual future In XTZ,BTC,ETH without worrying about
-              liquidity
-            </p>
-            {/* <a>
-              Coming soon <img src="img/Stroke1.png" />
-            </a> */}
-          </div>
-          <div className="each_cards">
-            <img src="img/card2.png" />
-            <h3>VMM</h3>
-            <p>
-              A VMM model has higher capital efficiency and is most suitable for
-              under-collateralized derivative products as compared to the AMM
-              model.
-            </p>
-            {/* <a>
-              Coming soon <img src="img/Stroke1.png" />
-            </a> */}
-          </div>
-          <div className="each_cards">
-            <img src="img/card3.png" />
-            <h3>Staking</h3>
-            <p>
-              Stake our Token and earn constant APY irrespective of market
-              volatality,alsoearn bonus tokens for staking certain period of
-              time.
-            </p>
-            {/* <a>
-              Get Started <img src="img/Stroke1.png" />
-            </a> */}
-          </div>
-        </div>
-      </div>
+     
 
       <section className="Landing_charts scrollFade">
         <div className="Landing_charts_content">
